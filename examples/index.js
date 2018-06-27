@@ -18,10 +18,17 @@ export default class MainComponent extends React.Component {
       value8: '',
       value9: '',
       value10: '',
+      value11: '',
       customMapping: [
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
         ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '@', '*sh'],
         ['z', 'x', 'c', 'v', 'b', 'n', 'm', '.com', '*bs'],
+      ],
+      numericMapping: [
+        ['7', '8', '9'],
+        ['4', '5', '6'],
+        ['1', '2', '3'],
+        ['0', '*bs', '*pt'],
       ],
     };
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -35,6 +42,7 @@ export default class MainComponent extends React.Component {
     this.handleValue8Change = this.handleValue8Change.bind(this);
     this.handleValue9Change = this.handleValue9Change.bind(this);
     this.handleValue10Change = this.handleValue10Change.bind(this);
+    this.handleValue11Change = this.handleValue11Change.bind(this);
     this.handleFocusButtonClicked = this.handleFocusButtonClicked.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
 
@@ -83,6 +91,10 @@ export default class MainComponent extends React.Component {
 
   handleValue10Change(val) {
     this.setState({ value10: val });
+  }
+
+  handleValue11Change(val) {
+    this.setState({ value11: val });
   }
 
   handleFocusButtonClicked() {
@@ -204,6 +216,19 @@ export default class MainComponent extends React.Component {
           onChange={(value) => { this.handleValue10Change(value); }}
           onFocus={(value) => { this.handleOnFocus(value); }}
           enabled
+        />
+        <br />
+
+        <p>Numeric layout with key to toggle preceeding +</p>
+        <KeyboardedInput
+          value={this.state.value11}
+          onChange={(value) => { this.handleValue11Change(value); }}
+          enabled
+          showNumericRow={false}
+          showShift={false}
+          showSymbols={false}
+          showSpacebar={false}
+          defaultKeyboard={this.state.numericMapping}
         />
         <br />
 
