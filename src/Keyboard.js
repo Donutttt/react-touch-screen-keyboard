@@ -56,6 +56,7 @@ export default class Keyboard extends PureComponent {
     this.handleSymbolsClick = this.handleSymbolsClick.bind(this);
     this.handleLanguageClick = this.handleLanguageClick.bind(this);
     this.handleDragKeyClick = this.handleDragKeyClick.bind(this);
+    this.handlePlusToggleClick = this.handlePlusToggleClick.bind(this);
 
     this.state = {
       currentLanguage: props.defaultKeyboard,
@@ -211,6 +212,22 @@ export default class Keyboard extends PureComponent {
       }
     }, 0);
     this.setState({ uppercase: this.isUppercase() });
+    inputNode.dispatchEvent(new CustomEvent('input'));
+  }
+
+  handlePlusToggleClick() {
+    const { inputNode } = this.props;
+    const { value } = inputNode;
+
+    const nextValue = value[0] === '+' ?
+      value.substring(1) :
+      `+${value}`;
+
+    inputNode.value = nextValue;
+    if (this.props.onClick) {
+      this.props.onClick(nextValue);
+    }
+
     inputNode.dispatchEvent(new CustomEvent('input'));
   }
 
