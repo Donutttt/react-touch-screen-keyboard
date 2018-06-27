@@ -292,6 +292,15 @@ export default class Keyboard extends PureComponent {
                       />
                     );
 
+                  case '*pt':
+                    return (
+                      <KeyboardButton
+                        value={'+'}
+                        onClick={this.handlePlusToggleClick}
+                        key={`b${ii}`}
+                      />
+                    );
+
                   default:
                     return (
                       <KeyboardButton
