@@ -68,6 +68,7 @@ You can place functional keys using the following placeholders:
 |---|---|
 | *sh | Shift |
 | *bs | Backspace |
+| *pt | Toggle preceeding + |
 
 ```js
 
